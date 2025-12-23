@@ -1,0 +1,41 @@
+import React from 'react';
+
+interface ButtonProps {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+  onClick?: () => void;
+}
+
+export default function Button({ 
+  children, 
+  variant = 'primary', 
+  size = 'md',
+  className = '',
+  onClick 
+}: ButtonProps) {
+  const baseStyles = 'font-satoshi font-medium text-base leading-[21.6px] rounded-[62px] transition-all duration-200 flex items-center justify-center';
+  
+  const variants = {
+    primary: 'bg-black text-white hover:bg-gray-800',
+    secondary: 'bg-white text-black border border-gray-200 hover:bg-gray-50',
+    outline: 'bg-transparent text-black border border-[rgba(0,0,0,0.1)] hover:bg-gray-50'
+  };
+  
+  const sizes = {
+    sm: 'px-[54px] py-4 h-[52px]',
+    md: 'px-[54px] py-4 h-[52px] w-[218px]',
+    lg: 'px-[54px] py-4 h-[52px] w-[210px]'
+  };
+  
+  return (
+    <button 
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+

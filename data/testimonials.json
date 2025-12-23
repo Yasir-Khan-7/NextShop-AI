@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah M.",
+    "rating": 5,
+    "text": "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
+    "verified": true
+  },
+  {
+    "id": 2,
+    "name": "Alex K.",
+    "rating": 5,
+    "text": "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.",
+    "verified": true
+  },
+  {
+    "id": 3,
+    "name": "James L.",
+    "rating": 5,
+    "text": "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.",
+    "verified": true
+  },
+  {
+    "id": 4,
+    "name": "Mooen",
+    "rating": 5,
+    "text": "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.",
+    "verified": true
+  },
+  {
+    "id": 5,
+    "name": "Emily R.",
+    "rating": 4.5,
+    "text": "Shop.co has completely transformed my wardrobe! The quality is outstanding and the customer service is top-notch. I've recommended it to all my friends.",
+    "verified": true
+  },
+  {
+    "id": 6,
+    "name": "Michael B.",
+    "rating": 5,
+    "text": "I've been shopping at Shop.co for over a year now and I'm consistently impressed by their attention to detail and the craftsmanship of their clothing. Highly recommended!",
+    "verified": true
+  },
+  {
+    "id": 7,
+    "name": "Olivia P.",
+    "rating": 4.5,
+    "text": "The variety and quality at Shop.co is unmatched. Whether I'm looking for casual everyday wear or something special for an event, I always find exactly what I need.",
+    "verified": true
+  },
+  {
+    "id": 8,
+    "name": "David K.",
+    "rating": 5,
+    "text": "Shopping at Shop.co has been a game-changer for me. The fit is perfect, the styles are modern, and the prices are reasonable. I couldn't ask for more!",
+    "verified": true
+  }
+]
+
