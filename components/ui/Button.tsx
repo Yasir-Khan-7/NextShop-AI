@@ -6,6 +6,7 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({ 
@@ -13,7 +14,8 @@ export default function Button({
   variant = 'primary', 
   size = 'md',
   className = '',
-  onClick 
+  onClick,
+  type = 'button'
 }: ButtonProps) {
   const baseStyles = 'font-satoshi font-medium text-base leading-[21.6px] rounded-[62px] transition-all duration-200 flex items-center justify-center';
   
@@ -31,6 +33,7 @@ export default function Button({
   
   return (
     <button 
+      type={type}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={onClick}
     >
