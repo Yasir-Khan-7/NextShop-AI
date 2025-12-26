@@ -37,7 +37,6 @@ export default function ProductCard({
       name,
       image,
       price,
-      quantity: 1,
       size: 'M',
       color: 'Default'
     });
