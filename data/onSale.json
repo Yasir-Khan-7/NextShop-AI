@@ -1,0 +1,127 @@
+[
+  {
+    "id": 101,
+    "name": "Summer Graphic T-shirt",
+    "image": "/images/casual/casualimg1.svg",
+    "price": 145,
+    "originalPrice": 180,
+    "discount": 19,
+    "rating": 4.5,
+    "reviews": 234,
+    "badge": "Hot Deal"
+  },
+  {
+    "id": 102,
+    "name": "Slim Fit Polo Shirt",
+    "image": "/images/casual/casualimg2.svg",
+    "price": 180,
+    "originalPrice": 242,
+    "discount": 26,
+    "rating": 4.0,
+    "reviews": 189
+  },
+  {
+    "id": 103,
+    "name": "Classic Striped Tee",
+    "image": "/images/casual/casualimg3.svg",
+    "price": 120,
+    "originalPrice": 150,
+    "discount": 20,
+    "rating": 5.0,
+    "reviews": 312,
+    "badge": "Best Seller"
+  },
+  {
+    "id": 104,
+    "name": "Premium Denim Jeans",
+    "image": "/images/casual/casualimg4.svg",
+    "price": 240,
+    "originalPrice": 300,
+    "discount": 20,
+    "rating": 4.5,
+    "reviews": 267
+  },
+  {
+    "id": 105,
+    "name": "Vintage Checkered Shirt",
+    "image": "/images/casual/casualimg5.svg",
+    "price": 180,
+    "originalPrice": 225,
+    "discount": 20,
+    "rating": 4.5,
+    "reviews": 198
+  },
+  {
+    "id": 106,
+    "name": "Urban Striped T-shirt",
+    "image": "/images/casual/casualimg6.svg",
+    "price": 130,
+    "originalPrice": 160,
+    "discount": 19,
+    "rating": 4.0,
+    "reviews": 245,
+    "badge": "Limited"
+  },
+  {
+    "id": 107,
+    "name": "Business Casual Shirt",
+    "image": "/images/casual/casualimg7.svg",
+    "price": 212,
+    "originalPrice": 265,
+    "discount": 20,
+    "rating": 5.0,
+    "reviews": 289
+  },
+  {
+    "id": 108,
+    "name": "Retro Graphic Tee",
+    "image": "/images/casual/casualimg8.svg",
+    "price": 145,
+    "originalPrice": 190,
+    "discount": 24,
+    "rating": 4.5,
+    "reviews": 167
+  },
+  {
+    "id": 109,
+    "name": "Comfort Fit Shorts",
+    "image": "/images/casual/casualimg9.svg",
+    "price": 80,
+    "originalPrice": 100,
+    "discount": 20,
+    "rating": 3.5,
+    "reviews": 134
+  },
+  {
+    "id": 110,
+    "name": "Designer Polo Shirt",
+    "image": "/images/casual/casualimg1.svg",
+    "price": 195,
+    "originalPrice": 260,
+    "discount": 25,
+    "rating": 4.5,
+    "reviews": 221,
+    "badge": "Hot Deal"
+  },
+  {
+    "id": 111,
+    "name": "Modern Fit T-shirt",
+    "image": "/images/casual/casualimg2.svg",
+    "price": 165,
+    "originalPrice": 220,
+    "discount": 25,
+    "rating": 4.0,
+    "reviews": 178
+  },
+  {
+    "id": 112,
+    "name": "Classic Casual Shirt",
+    "image": "/images/casual/casualimg3.svg",
+    "price": 190,
+    "originalPrice": 240,
+    "discount": 21,
+    "rating": 4.5,
+    "reviews": 203
+  }
+]
+
