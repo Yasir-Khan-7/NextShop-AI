@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Rating from './Rating';
 import Button from './Button';
+import { useCart } from '@/context/CartContext';
 
 interface Product {
   name: string;
@@ -15,6 +17,7 @@ interface Product {
   colors: { name: string; hex: string; available: boolean }[];
   sizes: string[];
   inStock: boolean;
+  images: string[];
 }
 
 interface ProductInfoProps {
@@ -22,15 +25,43 @@ interface ProductInfoProps {
 }
 
 export default function ProductInfo({ product }: ProductInfoProps) {
+  const router = useRouter();
+  const { addToCart } = useCart();
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(2); // Default to "Large"
   const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
 
   const handleQuantityChange = (change: number) => {
     const newQuantity = quantity + change;
     if (newQuantity >= 1 && newQuantity <= 99) {
       setQuantity(newQuantity);
     }
+  };
+
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    
+    // Add items to cart based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addToCart({
+        id: product.name.toLowerCase().replace(/\s+/g, '-'),
+        name: product.name,
+        image: product.images[0],
+        price: product.price,
+        size: product.sizes[selectedSize],
+        color: product.colors[selectedColor].name,
+      });
+    }
+
+    // Show success feedback
+    setTimeout(() => {
+      setIsAdding(false);
+      // Optionally redirect to cart or show a success message
+      if (confirm('Product added to cart! Go to cart?')) {
+        router.push('/cart');
+      }
+    }, 500);
   };
 
   return (
@@ -140,8 +171,13 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </div>
 
         {/* Add to Cart Button */}
-        <Button size="lg" className="flex-1 w-full sm:w-auto">
-          Add to Cart
+        <Button 
+          size="lg" 
+          className="flex-1 w-full sm:w-auto"
+          onClick={handleAddToCart}
+          disabled={isAdding || !product.inStock}
+        >
+          {isAdding ? 'Adding...' : product.inStock ? 'Add to Cart' : 'Out of Stock'}
         </Button>
       </div>
     </div>

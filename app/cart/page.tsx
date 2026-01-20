@@ -43,7 +43,7 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-white py-8 sm:py-12">
-      <div className="container mx-auto px-4 sm:px-8 lg:px-24">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-24 pb-40 sm:pb-48 lg:pb-56">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-black/60 mb-6">
           <Link href="/" className="hover:text-black">

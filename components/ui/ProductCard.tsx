@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import Rating from './Rating';
 import ImageModal from './ImageModal';
@@ -29,11 +30,14 @@ export default function ProductCard({
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useCart();
 
+  const productSlug = name.toLowerCase().replace(/\s+/g, '-');
+
   const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     
     addToCart({
-      id: name.toLowerCase().replace(/\s+/g, '-'),
+      id: productSlug,
       name,
       image,
       price,
@@ -46,15 +50,21 @@ export default function ProductCard({
     setTimeout(() => setIsAdded(false), 2000);
   };
 
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsModalOpen(true);
+  };
+
   return (
     <>
-      <div className="group cursor-pointer max-w-[295px] w-full">
+      <Link href={`/product/${productSlug}`} className="group cursor-pointer max-w-[295px] w-full block">
         <div 
           className="relative bg-[#F0EEED] rounded-[20px] overflow-hidden mb-4 w-full h-[200px] sm:h-[250px] lg:h-[298px]"
         >
           <div 
             className="w-full h-full cursor-zoom-in"
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleImageClick}
           >
             <Image
               src={image}
@@ -112,7 +122,7 @@ export default function ProductCard({
           </button>
         </div>
         
-        <h3 className="font-satoshi font-bold text-base sm:text-lg lg:text-xl leading-[27px] mb-2 text-black">
+        <h3 className="font-satoshi font-bold text-base sm:text-lg lg:text-xl leading-[27px] mb-2 text-black group-hover:underline">
           {name}
         </h3>
         
@@ -140,7 +150,7 @@ export default function ProductCard({
             </>
           )}
         </div>
-      </div>
+      </Link>
 
       <ImageModal 
         isOpen={isModalOpen}

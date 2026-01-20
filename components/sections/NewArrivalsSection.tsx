@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ProductCard from '../ui/ProductCard';
 import Button from '../ui/Button';
 import SectionTitle from '../ui/SectionTitle';
@@ -26,9 +27,11 @@ export default function NewArrivalsSection() {
         </div>
         
         <div className="flex justify-center">
-          <Button variant="outline" size="md">
-            View All
-          </Button>
+          <Link href="/new-arrivals">
+            <Button variant="outline" size="md">
+              View All
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

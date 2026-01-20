@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('profile');
   const [userData, setUserData] = useState({
     firstName: 'John',
@@ -46,6 +48,17 @@ export default function ProfilePage() {
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Profile updated successfully!');
+  };
+
+  const handleViewOrderDetails = (orderId: string) => {
+    alert(`Viewing details for order ${orderId}\n\nOrder tracking and details would be displayed here.`);
+  };
+
+  const handleLogout = () => {
+    if (confirm('Are you sure you want to logout?')) {
+      alert('Logged out successfully!');
+      router.push('/');
+    }
   };
 
   return (
@@ -152,7 +165,10 @@ export default function ProfilePage() {
                   </div>
                 </button>
 
-                <button className="w-full text-left px-4 py-3 rounded-lg font-satoshi text-base text-[#FF3333] hover:bg-[#FF3333]/10 transition-colors">
+                <button 
+                  onClick={handleLogout}
+                  className="w-full text-left px-4 py-3 rounded-lg font-satoshi text-base text-[#FF3333] hover:bg-[#FF3333]/10 transition-colors"
+                >
                   <div className="flex items-center gap-3">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
@@ -322,7 +338,11 @@ export default function ProfilePage() {
                             {order.items} items • ${order.total}
                           </p>
                         </div>
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleViewOrderDetails(order.id)}
+                        >
                           View Details
                         </Button>
                       </div>

@@ -3,12 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
   const { cartCount } = useCart();
+  const router = useRouter();
   
   const toggleShopDropdown = () => {
     setIsShopDropdownOpen(!isShopDropdownOpen);
@@ -21,23 +25,41 @@ export default function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/category/casual?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
+  };
+
+  const closeBanner = () => {
+    setIsBannerVisible(false);
+  };
   
   return (
     <>
       {/* Top Banner */}
-      <div className="bg-black text-white h-[38px] flex items-center justify-center relative px-4">
-        <p className="text-xs sm:text-sm font-satoshi font-normal leading-[18.9px] text-center">
-          Sign up and get 20% off to your first order.{' '}
-          <Link href="/signup" className="underline font-medium">
-            Sign Up Now
-          </Link>
-        </p>
-        <button className="absolute right-4 sm:right-8 lg:right-[100px] top-1/2 -translate-y-1/2 text-white">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-        </button>
-      </div>
+      {isBannerVisible && (
+        <div className="bg-black text-white h-[38px] flex items-center justify-center relative px-4">
+          <p className="text-xs sm:text-sm font-satoshi font-normal leading-[18.9px] text-center">
+            Sign up and get 20% off to your first order.{' '}
+            <Link href="/signup" className="underline font-medium">
+              Sign Up Now
+            </Link>
+          </p>
+          <button 
+            onClick={closeBanner}
+            className="absolute right-4 sm:right-8 lg:right-[100px] top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity"
+            aria-label="Close banner"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
+        </div>
+      )}
       
       {/* Main Header */}
       <header className="bg-white border-b border-black/10">
@@ -104,7 +126,7 @@ export default function Header() {
             </nav>
             
             {/* Search Bar - Desktop */}
-            <div className="hidden lg:flex flex-1 max-w-[577px]">
+            <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-[577px]">
               <div className="relative w-full">
                 <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" viewBox="0 0 20 20" fill="none">
                   <circle cx="9.5" cy="9.5" r="6.5" stroke="rgba(0, 0, 0, 0.4)" strokeWidth="1.5"/>
@@ -112,15 +134,26 @@ export default function Header() {
                 </svg>
                 <input
                   type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search for products..."
                   className="w-full h-12 bg-[#F0F0F0] rounded-[62px] py-3 pl-12 pr-4 font-satoshi font-normal text-base leading-[21.6px] text-black placeholder:text-[rgba(0,0,0,0.4)] focus:outline-none"
                 />
               </div>
-            </div>
+            </form>
             
             {/* Icons */}
             <div className="flex items-center gap-3 sm:gap-[14px]">
-              <button className="lg:hidden">
+              <button 
+                className="lg:hidden"
+                onClick={() => {
+                  const query = prompt('Search for products:');
+                  if (query && query.trim()) {
+                    router.push(`/category/casual?search=${encodeURIComponent(query)}`);
+                  }
+                }}
+                aria-label="Search"
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <circle cx="11" cy="11" r="7" stroke="black" strokeWidth="1.5"/>
                   <path d="M20 20L17 17" stroke="black" strokeWidth="1.5" strokeLinecap="round"/>
